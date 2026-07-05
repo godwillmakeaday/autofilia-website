@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #07080A;
+  color: #E6E0D7;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at top left, rgba(216,168,79,0.14), transparent 32rem),
+    radial-gradient(circle at 80% 10%, rgba(242,92,46,0.11), transparent 30rem),
+    linear-gradient(180deg, rgba(255,255,255,0.03), transparent 28rem);
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+  z-index: -1;
+}
+
+::selection {
+  background: rgba(216,168,79,0.35);
+  color: white;
+}
+
+@layer components {
+  .container-pad {
+    @apply mx-auto max-w-7xl px-5 lg:px-8;
+  }
+
+  .soft-card {
+    @apply rounded-[2rem] border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/20;
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-brass px-6 py-3 text-sm font-bold text-asphalt transition hover:scale-[1.02] hover:bg-smoke;
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-sm font-bold text-smoke transition hover:border-brass/50 hover:text-brass;
+  }
+}
