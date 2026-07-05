@@ -1,51 +1,26 @@
-import { SectionHeader } from "@/components/SectionHeader";
-import { articles, editorialPillars } from "@/data/site";
+import type { Metadata } from "next";
+import ArticleCard from "@/components/ArticleCard";
+import SectionHeader from "@/components/SectionHeader";
+import { articleCards } from "@/data/site";
 
-export const metadata = {
-  title: "Autofilia Articles",
-  description: "Car culture essays and guides on car beauty, car types, SUVs, first car dreams, African roads, and automotive memory."
+export const metadata: Metadata = {
+  title: "Autofilia Articles — Car Culture, First Car Dreams, SUV Culture, and Car Meaning",
+  description: "Read Autofilia essays on first car dreams, SUV culture, car types, luxury, status, freedom, and the dignity of loving cars before ownership."
 };
 
 export default function ArticlesPage() {
   return (
-    <main>
-      <section className="py-16 lg:py-24">
-        <div className="container-pad">
-          <SectionHeader
-            eyebrow="Articles"
-            title="The Autofilia Editorial Desk"
-            description="A starter archive for car writing that carries both information and feeling: car types, dreams, SUVs, ownership lessons, luxury signals, African roads, and automotive memory."
-            align="center"
-          />
-          <div className="mx-auto mt-8 flex max-w-4xl flex-wrap justify-center gap-3">
-            {editorialPillars.map((pillar) => (
-              <span key={pillar} className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/55">
-                {pillar}
-              </span>
-            ))}
-          </div>
+    <section className="section-pad">
+      <div className="mx-auto max-w-7xl">
+        <SectionHeader
+          kicker="Articles"
+          title="Car culture with feeling, structure, and intelligence."
+          intro="Autofilia is not a news race. It is a place for deeper essays about why cars matter to people before ownership, during ownership, and after ownership."
+        />
+        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          {articleCards.map((article) => <ArticleCard key={article.slug} {...article} />)}
         </div>
-      </section>
-
-      <section className="pb-20 lg:pb-28">
-        <div className="container-pad grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {articles.map((article, index) => (
-            <article key={article.title} className="soft-card flex min-h-[310px] flex-col justify-between p-6 transition hover:-translate-y-1 hover:border-brass/40">
-              <div>
-                <div className="mb-6 flex items-center justify-between gap-4">
-                  <p className="text-xs font-bold uppercase tracking-[0.28em] text-brass/80">{article.category}</p>
-                  <span className="text-xs text-white/35">0{index + 1}</span>
-                </div>
-                <h2 className="font-display text-3xl leading-tight text-smoke">{article.title}</h2>
-                <p className="mt-5 text-sm leading-7 text-white/60">{article.excerpt}</p>
-              </div>
-              <p className="mt-8 border-t border-white/10 pt-4 text-xs uppercase tracking-[0.24em] text-white/35">
-                Future essay placeholder
-              </p>
-            </article>
-          ))}
-        </div>
-      </section>
-    </main>
+      </div>
+    </section>
   );
 }

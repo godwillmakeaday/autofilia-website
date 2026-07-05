@@ -3,9 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --font-display: Georgia, "Times New Roman", serif;
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color-scheme: dark;
+  background: #050505;
 }
 
 * {
@@ -18,55 +17,46 @@ html {
 
 body {
   margin: 0;
-  background: #07080A;
-  color: #E6E0D7;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
   background:
-    radial-gradient(circle at top left, rgba(216,168,79,0.14), transparent 32rem),
-    radial-gradient(circle at 80% 10%, rgba(242,92,46,0.11), transparent 30rem),
-    linear-gradient(180deg, rgba(255,255,255,0.03), transparent 28rem);
-  z-index: -2;
+    radial-gradient(circle at 20% 0%, rgba(217, 169, 79, 0.13), transparent 35%),
+    radial-gradient(circle at 90% 15%, rgba(122, 74, 43, 0.16), transparent 34%),
+    linear-gradient(180deg, #080808 0%, #050505 45%, #090603 100%);
+  color: #f4ece0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.16;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: linear-gradient(to bottom, black, transparent 85%);
-  z-index: -1;
+a {
+  text-decoration: none;
 }
 
 ::selection {
-  background: rgba(216,168,79,0.35);
-  color: white;
+  background: rgba(217, 169, 79, 0.35);
+  color: #fff;
 }
 
-@layer components {
-  .container-pad {
-    @apply mx-auto max-w-7xl px-5 lg:px-8;
-  }
+.page-shell {
+  min-height: 100vh;
+}
 
-  .soft-card {
-    @apply rounded-[2rem] border border-white/10 bg-white/[0.04] shadow-2xl shadow-black/20;
-  }
+.section-pad {
+  padding: 5rem 1.25rem;
+}
 
-  .button-primary {
-    @apply inline-flex items-center justify-center rounded-full bg-brass px-6 py-3 text-sm font-bold text-asphalt transition hover:scale-[1.02] hover:bg-smoke;
+@media (min-width: 768px) {
+  .section-pad {
+    padding: 7rem 2rem;
   }
+}
 
-  .button-secondary {
-    @apply inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 text-sm font-bold text-smoke transition hover:border-brass/50 hover:text-brass;
-  }
+.luxury-panel {
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.07), rgba(255,255,255,.015)),
+    radial-gradient(circle at top right, rgba(217,169,79,.13), transparent 35%);
+}
+
+.hairline-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 54px 54px;
 }

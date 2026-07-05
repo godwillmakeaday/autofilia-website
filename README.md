@@ -1,78 +1,69 @@
-# Autofilia Website
+# Autofilia Website v2
 
-Autofilia is a premium automotive culture website for people who love cars before they own them, while they own them, and even after they outgrow them.
+Autofilia is a premium car-culture platform for people who love cars before they own them, while they own them, and even after they outgrow them.
 
-It is built as a Next.js App Router project with TypeScript and Tailwind CSS.
+## What is included
 
-## Brand position
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- Premium dark/gold editorial design
+- Functional navigation menu
+- Functional homepage CTA buttons
+- Homepage
+- About page
+- Manifesto page
+- Car Categories page
+- Dream Garage page
+- Articles page
+- Six article cards
+- Six article detail pages
+- SEO metadata for core pages
 
-**Autofilia** is not a dealership, repair shop, or generic review blog. It is a car-love magazine and cultural platform for dreamers, owners, observers, collectors, former owners, and future owners.
+## Main routes
 
-Core line:
+- `/`
+- `/about`
+- `/manifesto`
+- `/car-categories`
+- `/garage`
+- `/articles`
+- `/articles/the-first-car-is-never-just-a-car`
+- `/articles/why-people-love-suvs`
+- `/articles/the-shame-of-not-owning-a-car`
 
-> Autofilia is for people who love cars before they own them, while they own them, and even after they outgrow them.
+## Termux update steps for an existing GitHub/Vercel repo
 
-## Pages included
-
-- `/` — polished homepage with hero, manifesto, car categories, before ownership, during ownership, beyond ownership, editorial pillars, articles, dream garage, and community section.
-- `/about` — about page explaining the philosophy behind Autofilia.
-- `/articles` — starter editorial archive with article cards.
-
-## Local setup
+Unzip the project, copy it into your existing `~/autofilia-website` folder, then commit and push.
 
 ```bash
-npm install
+cd ~
+unzip /sdcard/Download/autofilia-website-v2.zip
+cp -r autofilia-website-v2/* ~/autofilia-website/
+cd ~/autofilia-website
+git add .
+git commit -m "Expand Autofilia platform structure"
+git push
+vercel --prod
+```
+
+If npm install is slow on Termux, do not fight it. Push the code and allow Vercel to install dependencies in the cloud.
+
+## Local development
+
+```bash
+npm install --no-audit --no-fund
 npm run dev
 ```
 
-Open the local URL shown in your terminal.
+Open:
+
+```text
+http://localhost:3000
+```
 
 ## Build test
 
 ```bash
 npm run build
 ```
-
-## Termux to GitHub to Vercel workflow
-
-After unzipping this project in Termux:
-
-```bash
-cd autofilia-website
-npm install
-npm run build
-```
-
-Then initialize Git:
-
-```bash
-git init
-git add .
-git commit -m "Initial Autofilia website"
-```
-
-Create a new GitHub repository named `autofilia-website`, then connect and push:
-
-```bash
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/autofilia-website.git
-git push -u origin main
-```
-
-Then deploy through Vercel by importing the GitHub repository.
-
-## Notes for expansion
-
-Possible next additions:
-
-- Real article pages with slugs.
-- Car profile pages for the Dream Garage.
-- Beginner car dictionary.
-- SUV explainer section.
-- African roads and used-car wisdom section.
-- Newsletter form or waitlist.
-- Image replacement using local files in `/public/images`.
-
-## Important
-
-This project uses placeholder visual blocks instead of copyrighted car photos. Add your own images later under `public/images` and update the components if needed.
