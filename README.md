@@ -1,58 +1,44 @@
-# Autofilia Website v2
+# Autofilia v3 — Automotive Affection Platform
 
-Autofilia is a premium car-culture platform for people who love cars before they own them, while they own them, and even after they outgrow them.
+Autofilia is a premium automotive affection platform for people who love cars before they own them, while they own them, and even after they outgrow them.
 
-## What is included
+## What this version adds
+
+- `/start-here`
+- `/dream-garage-builder`
+- `/car-type-finder`
+- `/car-meaning-library`
+- `/garage`
+- `/car-categories`
+- `/before-ownership`
+- `/during-ownership`
+- `/beyond-ownership`
+- `/african-roads`
+- `/tools`
+- `/manifesto`
+- `/articles`
+- 8 article detail pages
+- mobile-friendly navigation
+- SEO metadata
+- client-side tools with no database and no external API
+
+## Core doctrine
+
+You do not need to own a car before you love cars. Ownership is only one chapter of automotive affection.
+
+## Tech stack
 
 - Next.js App Router
 - TypeScript
 - Tailwind CSS
-- Premium dark/gold editorial design
-- Functional navigation menu
-- Functional homepage CTA buttons
-- Homepage
-- About page
-- Manifesto page
-- Car Categories page
-- Dream Garage page
-- Articles page
-- Six article cards
-- Six article detail pages
-- SEO metadata for core pages
+- React client components for interactive tools
+- Vercel-ready
 
-## Main routes
-
-- `/`
-- `/about`
-- `/manifesto`
-- `/car-categories`
-- `/garage`
-- `/articles`
-- `/articles/the-first-car-is-never-just-a-car`
-- `/articles/why-people-love-suvs`
-- `/articles/the-shame-of-not-owning-a-car`
-
-## Termux update steps for an existing GitHub/Vercel repo
-
-Unzip the project, copy it into your existing `~/autofilia-website` folder, then commit and push.
-
-```bash
-cd ~
-unzip /sdcard/Download/autofilia-website-v2.zip
-cp -r autofilia-website-v2/* ~/autofilia-website/
-cd ~/autofilia-website
-git add .
-git commit -m "Expand Autofilia platform structure"
-git push
-vercel --prod
-```
-
-If npm install is slow on Termux, do not fight it. Push the code and allow Vercel to install dependencies in the cloud.
-
-## Local development
+## Local setup
 
 ```bash
 npm install --no-audit --no-fund
+npm run build
 npm run dev
 ```
 
@@ -62,8 +48,17 @@ Open:
 http://localhost:3000
 ```
 
-## Build test
+## Important Termux note
+
+Do not install/build inside `/sdcard/Download`. Copy the project into Termux home first:
 
 ```bash
+cp -r /sdcard/Download/autofilia-website-v3 ~/autofilia-website-v3
+cd ~/autofilia-website-v3
+npm install --no-audit --no-fund
 npm run build
 ```
+
+## Deployment
+
+This package uses modern dependency ranges and no lock file so Vercel can perform a fresh cloud install. If your phone network is weak, push the code to GitHub and let Vercel install dependencies in the cloud.

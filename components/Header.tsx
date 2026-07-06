@@ -1,43 +1,58 @@
-import Link from "next/link";
-import { navLinks } from "@/data/site";
+"use client";
 
-export default function Header() {
+import Link from "next/link";
+import { useState } from "react";
+import { navLinks } from "@/lib/siteData";
+
+export function Header() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-night/92 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8">
-        <Link href="/" className="group flex items-center gap-4" aria-label="Autofilia home">
-          <span className="grid h-14 w-14 place-items-center rounded-full border border-gold/35 bg-gold/10 font-display text-xl font-black text-gold shadow-glow transition group-hover:bg-gold group-hover:text-black">
-            A
-          </span>
+    <header className="sticky top-0 z-50 border-b border-gold/10 bg-ink/86 backdrop-blur-xl">
+      <div className="container-page flex h-20 items-center justify-between gap-5">
+        <Link href="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
+          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/40 bg-gold/10 text-lg font-black text-gold">A</span>
           <span>
-            <span className="block font-display text-3xl tracking-wide text-pearl">Autofilia</span>
-            <span className="block text-[11px] font-bold uppercase tracking-[0.42em] text-smoke/70">For the Love of Cars</span>
+            <span className="display-title block text-2xl font-semibold text-[#fff4df]">Autofilia</span>
+            <span className="hidden text-[0.65rem] uppercase tracking-[0.22em] text-muted sm:block">Automotive Affection</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary navigation">
+        <nav className="hidden items-center gap-5 xl:flex">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="text-sm font-semibold text-smoke/75 transition hover:text-gold">
+            <Link key={link.href} href={link.href} className="text-sm font-medium text-smoke transition hover:text-softgold">
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <details className="group relative lg:hidden">
-          <summary className="list-none rounded-full border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-bold uppercase tracking-[0.22em] text-gold marker:hidden">
-            Menu
-          </summary>
-          <div className="absolute right-0 mt-4 w-72 rounded-[2rem] border border-white/10 bg-[#090909] p-4 shadow-panel">
-            <nav className="grid gap-2" aria-label="Mobile navigation">
-              {navLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="rounded-2xl px-4 py-3 text-base font-semibold text-pearl/85 transition hover:bg-white/[0.05] hover:text-gold">
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-        </details>
+        <button
+          type="button"
+          onClick={() => setOpen(!open)}
+          className="rounded-full border border-gold/30 px-4 py-2 text-sm font-semibold text-softgold xl:hidden"
+          aria-expanded={open}
+          aria-label="Toggle navigation menu"
+        >
+          {open ? "Close" : "Menu"}
+        </button>
       </div>
+
+      {open ? (
+        <div className="border-t border-gold/10 bg-[#0b0a08] xl:hidden">
+          <nav className="container-page grid gap-2 py-5 sm:grid-cols-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="rounded-2xl border border-gold/10 bg-white/[0.02] px-4 py-3 text-sm font-semibold text-smoke hover:border-gold/40 hover:text-softgold"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      ) : null}
     </header>
   );
 }

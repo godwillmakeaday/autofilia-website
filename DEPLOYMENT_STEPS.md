@@ -1,31 +1,65 @@
-# Autofilia v2 Deployment Steps
+# Deploy Autofilia v3 from Termux
 
-## If you are updating the existing live site
+These steps assume your existing live project folder is `~/autofilia-website` and your GitHub/Vercel project is already connected.
+
+## 1. Unzip v3 from Downloads
 
 ```bash
-cd ~
-unzip /sdcard/Download/autofilia-website-v2.zip
-cp -r autofilia-website-v2/* ~/autofilia-website/
+cd /sdcard/Download
+unzip autofilia-website-v3.zip -d ~/autofilia-v3-temp
+```
+
+## 2. Copy v3 files into the existing live project
+
+```bash
+cp -r ~/autofilia-v3-temp/autofilia-website-v3/* ~/autofilia-website/
 cd ~/autofilia-website
+rm -f package-lock.json
+```
+
+## 3. Commit and push
+
+```bash
 git status
 git add .
-git commit -m "Expand Autofilia platform structure"
+git commit -m "Upgrade Autofilia to automotive affection platform"
 git push
+```
+
+## 4. Deploy on Vercel
+
+```bash
 vercel --prod
 ```
 
-When Vercel asks to pull development environment variables, answer `no`.
+When asked about environment variables, answer:
 
-## If package install fails on Termux
-
-It is usually network timeout. Push the files to GitHub and let Vercel install dependencies in the cloud.
-
-## If Vercel says package.json is invalid
-
-Run:
-
-```bash
-node -e "JSON.parse(require('fs').readFileSync('package.json','utf8')); console.log('package.json OK')"
+```text
+no
 ```
 
-If it says OK, deploy again.
+## 5. Test important routes
+
+```text
+/
+/start-here
+/dream-garage-builder
+/car-type-finder
+/car-meaning-library
+/garage
+/car-categories
+/before-ownership
+/during-ownership
+/beyond-ownership
+/african-roads
+/tools
+/manifesto
+/articles
+/articles/the-first-car-is-never-just-a-car
+/articles/why-people-love-suvs
+/articles/pride-without-arrogance
+```
+
+## If npm is slow on Termux
+
+Do not fight the phone network. Commit the package files and let Vercel install in the cloud.

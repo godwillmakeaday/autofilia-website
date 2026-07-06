@@ -4,25 +4,24 @@ const config: Config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./data/**/*.{js,ts,jsx,tsx,mdx}"
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
     extend: {
       colors: {
-        ink: "#050505",
-        night: "#080808",
-        smoke: "#bdb5aa",
-        pearl: "#f4ece0",
-        gold: "#d9a94f",
-        copper: "#7a4a2b"
-      },
-      fontFamily: {
-        display: ["Georgia", "Times New Roman", "serif"],
-        body: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
+        ink: "#070706",
+        asphalt: "#11100d",
+        panel: "#171511",
+        gold: "#d7a957",
+        softgold: "#f2d9a0",
+        smoke: "#d8d1c4",
+        muted: "#9e9485"
       },
       boxShadow: {
-        glow: "0 0 80px rgba(217, 169, 79, 0.16)",
-        panel: "0 30px 120px rgba(0,0,0,.55)"
+        glow: "0 20px 80px rgba(215,169,87,0.16)"
+      },
+      backgroundImage: {
+        road: "linear-gradient(90deg, rgba(215,169,87,0.08) 1px, transparent 1px), linear-gradient(rgba(215,169,87,0.06) 1px, transparent 1px)"
       }
     }
   },

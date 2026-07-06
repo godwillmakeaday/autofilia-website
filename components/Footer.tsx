@@ -1,24 +1,26 @@
 import Link from "next/link";
-import { navLinks } from "@/data/site";
+import { navLinks } from "@/lib/siteData";
 
-export default function Footer() {
+export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-black px-5 py-14 sm:px-8">
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.4fr_1fr]">
+    <footer className="mt-24 border-t border-gold/10 bg-[#090806] py-12">
+      <div className="container-page grid gap-10 lg:grid-cols-[1.2fr_1fr]">
         <div>
-          <p className="font-display text-4xl text-pearl">Autofilia</p>
-          <p className="mt-4 max-w-2xl text-lg leading-8 text-smoke/70">
-            For the love of cars before, during, and beyond ownership. A cultural home for the dreamer, the owner, the former owner, and the person still learning the language of machines.
+          <p className="display-title text-4xl font-semibold text-[#fff4df]">Autofilia</p>
+          <p className="mt-4 max-w-xl leading-8 text-smoke">
+            For the love of cars before, during, and beyond ownership. A premium automotive affection platform for dreamers, owners, former owners, and observers.
           </p>
         </div>
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="rounded-2xl border border-white/10 px-4 py-3 text-sm font-semibold text-smoke/80 transition hover:border-gold/40 hover:text-gold">
+            <Link key={link.href} href={link.href} className="text-sm text-muted hover:text-softgold">
               {link.label}
             </Link>
           ))}
         </div>
       </div>
+      <div className="container-page mt-10 gold-line" />
+      <p className="container-page mt-8 text-xs uppercase tracking-[0.24em] text-muted">Autofilia — Automotive Affection, not automotive arrogance.</p>
     </footer>
   );
 }

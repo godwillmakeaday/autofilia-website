@@ -1,26 +1,40 @@
-import type { Metadata } from "next";
-import ArticleCard from "@/components/ArticleCard";
-import SectionHeader from "@/components/SectionHeader";
-import { articleCards } from "@/data/site";
+import { Metadata } from "next";
+import Link from "next/link";
+import { PageHero } from "@/components/PageHero";
+import { articleCategories, articles, extraArticleCards } from "@/lib/siteData";
 
 export const metadata: Metadata = {
-  title: "Autofilia Articles — Car Culture, First Car Dreams, SUV Culture, and Car Meaning",
-  description: "Read Autofilia essays on first car dreams, SUV culture, car types, luxury, status, freedom, and the dignity of loving cars before ownership."
+  title: "Articles — Autofilia",
+  description: "Reflective automotive affection essays on first car dreams, SUV culture, African roads, luxury, status, ownership, and memory."
 };
 
 export default function ArticlesPage() {
+  const allCards = [
+    ...articles.map((article) => ({ ...article, href: `/articles/${article.slug}` })),
+    ...extraArticleCards
+  ];
+
   return (
-    <section className="section-pad">
-      <div className="mx-auto max-w-7xl">
-        <SectionHeader
-          kicker="Articles"
-          title="Car culture with feeling, structure, and intelligence."
-          intro="Autofilia is not a news race. It is a place for deeper essays about why cars matter to people before ownership, during ownership, and after ownership."
-        />
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
-          {articleCards.map((article) => <ArticleCard key={article.slug} {...article} />)}
+    <>
+      <PageHero eyebrow="Editorial" title="Articles" description="Essays for people who want to understand cars not only as machines, but as freedom, status, memory, family infrastructure, design, and responsibility." />
+      <section className="container-page py-16">
+        <div className="mb-10 flex flex-wrap gap-3">
+          {articleCategories.map((category) => (
+            <span key={category} className="rounded-full border border-gold/20 px-4 py-2 text-sm font-semibold text-smoke">{category}</span>
+          ))}
         </div>
-      </div>
-    </section>
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {allCards.map((article) => (
+            <Link key={article.title} href={article.href} className="card-surface group rounded-[1.6rem] p-6 transition hover:-translate-y-1 hover:border-gold/45">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-gold">{article.category}</p>
+              <h2 className="editorial-title mt-4 text-2xl font-semibold text-[#fff1d8]">{article.title}</h2>
+              <p className="mt-4 text-sm leading-7 text-smoke">{article.excerpt}</p>
+              <p className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-muted">{article.readingTime}</p>
+              <p className="mt-5 text-sm font-semibold text-softgold group-hover:text-gold">Open →</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }

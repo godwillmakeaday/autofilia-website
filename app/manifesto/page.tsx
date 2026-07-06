@@ -1,44 +1,35 @@
-import type { Metadata } from "next";
-import Card from "@/components/Card";
-import SectionHeader from "@/components/SectionHeader";
+import { Metadata } from "next";
+import { PageHero } from "@/components/PageHero";
+import { ButtonLink } from "@/components/ButtonLink";
 
 export const metadata: Metadata = {
-  title: "Autofilia Manifesto — You Do Not Need to Own a Car Before You Love Cars",
-  description: "The Autofilia manifesto gives dignity to car love before ownership, during ownership, and beyond ownership."
+  title: "The Autofilia Manifesto",
+  description: "You do not need to own a car before you love cars. Ownership is only one chapter of automotive affection."
 };
-
-const points = [
-  "You do not need to own a car before you love cars.",
-  "Car love can begin with admiration, curiosity, observation, and desire.",
-  "Desire is not shameful when it becomes attention, learning, discipline, and taste.",
-  "Ownership is only one chapter of automotive affection.",
-  "Cars can represent beauty, freedom, design, ambition, memory, engineering, status, and movement.",
-  "Autofilia gives language to the emotional, aesthetic, practical, and cultural meanings of cars."
-];
 
 export default function ManifestoPage() {
   return (
-    <section className="section-pad">
-      <div className="mx-auto max-w-7xl">
-        <SectionHeader
-          kicker="The Manifesto"
-          title="You do not need to own a car before you love cars."
-          intro="Autofilia is built for the person whose affection began before the keys arrived. The love is not fake because the car is not yet owned. The dream is already a school of taste."
-        />
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {points.map((point) => (
-            <Card key={point}>
-              <div className="mb-7 h-2 w-20 rounded-full bg-gold" />
-              <p className="text-xl leading-9 text-smoke/78">{point}</p>
-            </Card>
-          ))}
-        </div>
-        <Card className="mt-10 border-gold/25 bg-gold/[0.06]">
-          <p className="border-l-4 border-gold pl-7 font-display text-4xl leading-tight text-pearl sm:text-5xl">
-            Autofilia is not a confession of possession. It is a confession of attention.
-          </p>
-        </Card>
-      </div>
-    </section>
+    <>
+      <PageHero eyebrow="Manifesto" title="You do not need to own a car before you love cars." description="Ownership is only one chapter of automotive affection. Cars can represent beauty, freedom, design, ambition, memory, engineering, movement, status, and responsibility." />
+      <section className="container-page py-16">
+        <article className="card-surface article-prose rounded-[2rem] p-8 sm:p-12">
+          <p>Autofilia begins with a simple correction: car love does not begin at ownership. It begins the first time a person sees a car and feels something — curiosity, desire, beauty, ambition, freedom, or memory.</p>
+          <h2>Affection can come before possession</h2>
+          <p>You can love architecture before owning a house. You can love aviation before owning an aircraft. You can love music before owning a studio. In the same way, you can love cars before you have one.</p>
+          <h2>Desire is not shameful</h2>
+          <p>Desire becomes dangerous only when it turns into pressure, debt, arrogance, or false appearance. But desire itself can be noble. It can make a person learn, save, compare, inspect, and prepare.</p>
+          <h2>Cars are more than machines</h2>
+          <p>A car can be transport, but it can also be a symbol of arrival, a family tool, a road companion, a design object, a memory container, a business instrument, and a dream of freedom.</p>
+          <h2>Ownership is responsibility</h2>
+          <p>Autofilia refuses careless car worship. Love the machine, but respect people more. A car should not make its owner arrogant, reckless, or cruel to people outside the car.</p>
+          <h2>Automotive affection deserves language</h2>
+          <p>Many people love cars without knowing how to explain the love. Autofilia exists to give that affection dignity, structure, vocabulary, and direction.</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <ButtonLink href="/start-here">Start the Journey</ButtonLink>
+            <ButtonLink href="/car-meaning-library" variant="secondary">Read Car Meanings</ButtonLink>
+          </div>
+        </article>
+      </section>
+    </>
   );
 }
